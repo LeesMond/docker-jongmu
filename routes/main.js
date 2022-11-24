@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + "/index.html");
     });
 
-    app.get('id-name', (req, res) => {
+    app.get('/id-name', (req, res) => {
     console.log(mongoClient)
     mongoClient.connect(databaseUrl, function(err, database) {
     if (err != null) {
