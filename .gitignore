@@ -1,0 +1,18 @@
+#anew
+.git-credentials
+
+# environment files
+.env 
+
+# mongpdb backup / json
+mongodb/**/*.json
+mongodb/backup
+
+# nodejs node modules
+node_modules
+
+
+# python 
+python/**/.venv
+
+
