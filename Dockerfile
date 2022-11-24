@@ -5,8 +5,8 @@ FROM node:16
 WORKDIR /usr/src/app
 
 # Step 3
-RUN git clone https://github.com/devheyrin/docker-heyrin
-WORKDIR docker-heyrin
+RUN git clone https://github.com/LeesMond/docker-jongmu.git
+WORKDIR docker-jongmu
 RUN npm install
 
 # Step 4

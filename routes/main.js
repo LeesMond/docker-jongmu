@@ -8,13 +8,13 @@ const app = express;
 app.use(morgan('dev'));
 
 var db;
-var databaseUrl = "";
+var databaseUrl = "mongodb+srv://admin:1234@cluster0.5hijmxr.mongodb.net/?retryWrites=true&w=majority";
 
 app.get('/', (req, res) => {
 	res.sendFile(__dirname + "/index.html");
 });
 
-app.get('', (req, res) => {
+app.get('name-age', (req, res) => {
 	console.log(mongoClient)
 	mongoClient.connect(databaseUrl, function(err, database) {
 		if (err != null){
@@ -22,7 +22,7 @@ app.get('', (req, res) => {
 			console.log(err);
 		} else {
 			db = database.db('test');
-			db.collection('').find({}, {_id:0,})
+			db.collection('test').find({}, {_id:0, id:1, name:1})
 			.toArray(function(err, result){
 				if (err) throw err;
 				console.log('result: ');
@@ -33,15 +33,15 @@ app.get('', (req, res) => {
 				var template = ` 
 					<table border="1" margin: auto; text-align: center;>
 					<tr>
-						<th></th>
-						<th></th>
+						<th>아이디</th>
+						<th>이름</th>
 					</tr>
 				`;
 				result.forEach((item) => {
 					template += `
 						<tr>
-							<th>${item.}</th>
-							<th>${item.}</th>
+							<th>${item.id}</th>
+							<th>${item.name}</th>
 						</tr>`
 				});
 				template += `</table>`;
