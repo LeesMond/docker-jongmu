@@ -15,4 +15,4 @@ node_modules
 # python 
 python/**/.venv
 
-
+main.js
