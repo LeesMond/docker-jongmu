@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + "/index.html");
     });
 
-    app.get('/id-name', (req, res) => {
+    app.get('/smartphone', (req, res) => {
     console.log(mongoClient)
     mongoClient.connect(databaseUrl, function(err, database) {
     if (err != null) {
@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
     console.log(err);
     } else {
     db = database.db('test');
-    db.collection('things').find({}, {_id:0, id:1, name:1})
+    db.collection('smartphone').find({}, {_id:0, name:1, title:1})
     .toArray(function(err, result) {
     if (err) throw err;
     console.log('result: ');
@@ -33,16 +33,16 @@ app.get('/', (req, res) => {
     var template = `
     <table border="1" margin: auto; text-align: center;>
     <tr>
-    <th> 아이디 </th>
-    <th> 이름 </th>
+    <th> 회사명 </th>
+    <th> 스마트폰 이름 </th>
     </tr>
     `;
 
     result.forEach((item) => {
       	template += `
 	     	<tr>
-		    		<th>${item.id}</th>
-				       		<th>${item.name}</th>
+		    		<th>${item.name}</th>
+				       		<th>${item.title}</th>
 						       	</tr>`
 							});
 
